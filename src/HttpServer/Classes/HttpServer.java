@@ -74,7 +74,6 @@ public class HttpServer
      * Constructs and initializes a Server
      * @param httpServerConfig The config for the Server.
      */
-    @Deprecated
     public HttpServer(HttpServerConfig httpServerConfig)
     {
         try

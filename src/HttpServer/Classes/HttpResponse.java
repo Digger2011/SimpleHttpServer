@@ -3,9 +3,7 @@ package HttpServer.Classes;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.zip.GZIPOutputStream;
 
 /**
@@ -59,6 +57,8 @@ public class HttpResponse
     private String Warning = null;
     private String WWW_Authenticate = null;
     private String responseMessage = null;
+
+    private Map<String,String> HeaderMap = new HashMap<>(0);
 
 
     public void SendResponse(OutputStream out, boolean allowencoding,HttpServerConfig httpServerConfig) throws IOException

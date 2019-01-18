@@ -34,13 +34,13 @@ public class StandardMethodHandler implements MethodHandler
             {
                 if (httpRequest.getHeader("Origin").equals(s))
                 {
-                    httpResponse.setAccess_Control_Allow_Origin(s);
+                    httpResponse.setResponseHeader("Access_Control_Allow_Origin",s);
                     break;
                 }
             }
-            httpResponse.setAccess_Control_Allow_Methods("GET ,POST");
+            httpResponse.setResponseHeader("Access_Control_Allow_Methods","GET ,POST");
             if(httpRequest.getHeader("Access_Control_Request_Headers") != null)
-                httpResponse.setAccess_Control_Allow_Headers(httpRequest.getHeader("getAccess_Control_Request_Headers"));
+                httpResponse.setResponseHeader("Access_Control_Allow_Methods",httpRequest.getHeader("Access_Control_Request_Headers"));
             return true;
         }
         else if (httpRequest.getHeader("Origin")!=null && allowedOrigins != null)
@@ -49,7 +49,7 @@ public class StandardMethodHandler implements MethodHandler
             {
                 if (httpRequest.getHeader("Origin").equals(s))
                 {
-                    httpResponse.setAccess_Control_Allow_Origin(s);
+                    httpResponse.setResponseHeader("Access_Control_Allow_Origin",s);
                     break;
                 }
             }
@@ -129,7 +129,7 @@ public class StandardMethodHandler implements MethodHandler
         else
         {
             httpResponse.setStatusCode("405 Not Allowed");
-            httpResponse.setServer(HttpServer.ApplicationName);
+            httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
         }
     }
 

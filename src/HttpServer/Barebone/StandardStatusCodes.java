@@ -27,36 +27,36 @@ public class StandardStatusCodes implements StatusCodes
     private void success204nocontent(HttpResponse httpResponse)
     {
         httpResponse.setStatusCode("204 No Content");
-        httpResponse.setServer(HttpServer.ApplicationName);
+        httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
     }
 
     private void error403forbidden(HttpResponse httpResponse)
     {
         httpResponse.setStatusCode("403 Forbidden");
-        httpResponse.setServer(HttpServer.ApplicationName);
+        httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
     }
 
     private void error404notfound(HttpResponse httpResponse)
     {
         httpResponse.setStatusCode("404 Not Found");
-        httpResponse.setServer(HttpServer.ApplicationName);
+        httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
     }
 
     private void error500internalservererror(HttpResponse httpResponse)
     {
         httpResponse.setStatusCode("500 Internal Server Error");
-        httpResponse.setServer(HttpServer.ApplicationName);
+        httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
     }
 
     private void error400badrequest(HttpResponse httpResponse)
     {
         httpResponse.setStatusCode("400 Bad Request");
-        httpResponse.setServer(HttpServer.ApplicationName);
+        httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
     }
 
     private void success200ok(HttpResponse httpResponse)
     {
         httpResponse.setStatusCode("200 OK");
-        httpResponse.setServer(HttpServer.ApplicationName);
+        httpResponse.setResponseHeader("Server",HttpServer.ApplicationName);
     }
 }

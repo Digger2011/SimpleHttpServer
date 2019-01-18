@@ -28,26 +28,26 @@ public class StandardMethodHandler implements MethodHandler
 
     private boolean handleCORSb(HttpResponse httpResponse, HttpRequest httpRequest)
     {
-        if (httpRequest.getAccess_Control_Request_Method()!= null && allowedOrigins != null && httpRequest.getMethod().equals("OPTIONS"))
+        if (httpRequest.getHeader("Access_Control_Request_Method")!= null && allowedOrigins != null && httpRequest.getMethod().equals("OPTIONS"))
         {
             for(String s: allowedOrigins)
             {
-                if (httpRequest.getOrigin().equals(s))
+                if (httpRequest.getHeader("Origin").equals(s))
                 {
                     httpResponse.setAccess_Control_Allow_Origin(s);
                     break;
                 }
             }
             httpResponse.setAccess_Control_Allow_Methods("GET ,POST");
-            if(httpRequest.getAccess_Control_Request_Headers() != null)
-                httpResponse.setAccess_Control_Allow_Headers(httpRequest.getAccess_Control_Request_Headers());
+            if(httpRequest.getHeader("Access_Control_Request_Headers") != null)
+                httpResponse.setAccess_Control_Allow_Headers(httpRequest.getHeader("getAccess_Control_Request_Headers"));
             return true;
         }
-        else if (httpRequest.getOrigin()!=null && allowedOrigins != null)
+        else if (httpRequest.getHeader("Origin")!=null && allowedOrigins != null)
         {
             for(String s: allowedOrigins)
             {
-                if (httpRequest.getOrigin().equals(s))
+                if (httpRequest.getHeader("Origin").equals(s))
                 {
                     httpResponse.setAccess_Control_Allow_Origin(s);
                     break;

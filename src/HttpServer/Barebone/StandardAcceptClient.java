@@ -67,8 +67,8 @@ public class StandardAcceptClient implements ClientHandler
                 }
 
                 boolean allowencoding = false;
-                if (httpRequest.getAccept_Encoding() != null)
-                    allowencoding = httpRequest.getAccept_Encoding().contains("gzip");
+                if (httpRequest.getHeader("Accept_Encoding") != null)
+                    allowencoding = httpRequest.getHeader("Accept_Encoding").contains("gzip");
                 try
                 {
                     httpResponse.SendResponse(bufferedOutputStream, allowencoding, httpServerConfig);

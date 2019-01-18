@@ -91,6 +91,11 @@ public class StandardMethodHandler implements MethodHandler
 
             statusCodes.makeStandardResponse(200,httpResponse);
             httpResponse.setResponseMessage(stringBuilder.toString());
+            if(path.endsWith(".jpg"))
+            {
+                httpResponse.setResponseHeader("Content-Type", "image/jpeg");
+                httpResponse.setResponseHeader("Accept-Ranges","bytes");
+            }
         } catch (IOException e)
         {
             ExceptionCollector.logException(e,-2);

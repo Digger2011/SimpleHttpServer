@@ -19,7 +19,7 @@ public class Visualizer
 {
     public static void main(String[] args) throws IOException
     {
-        httpRequest("de.wikipedia.org","/wiki/Portable_Network_Graphics#/media/File:PNG_transparency_demonstration_1.png",80);
+        httpRequest("www.columbia.edu","/~fdc/picture-of-something.jpg",80);
 
     }
 
@@ -32,6 +32,14 @@ public class Visualizer
         bufferedWriter.write("Host: "+url+"\n\n");
         bufferedWriter.flush();
         String s ;
+        s = bufferedReader.readLine();
+        while (!s.equals(""))
+        {
+            System.out.println(s);
+            s =  bufferedReader.readLine();
+            if(s == null)
+                break;
+        }
         s = bufferedReader.readLine();
         while (!s.equals(""))
         {

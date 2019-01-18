@@ -12,50 +12,9 @@ import java.util.zip.GZIPOutputStream;
 public class HttpResponse
 {
     //Sonstige
-    private String charset = "ASCII";
+    private String charset = "ISO-8859-1";
     //Header Variablen
     private String StatusCode = null;
-    /*private String Access_Control_Allow_Origin = null;
-    private String Access_Control_Allow_Credentials = null;
-    private String Access_Control_Expose_Headers = null;
-    private String Access_Control_Allow_Methods = null;
-    private String Access_Control_Allow_Headers = null;
-    private String Accept_Patch = null;
-    private String Accept_Ranges = null;
-    private String Age = null;
-    private String Allow = null;
-    private String Alt_Svc =null;
-    private String Cache_Control =null;
-    private String Connection = null;
-    private String Content_Disposition = null;
-    private String Content_Encoding = null;
-    private String Content_Language = null;
-    private String Content_Location = null;
-    private String Content_Length = null;
-    private String Content_Range = null;
-    private String Content_Type = null;
-    private String Date = null;
-    private String ETag = null;
-    private String Expires = null;
-    private String Last_Modified = null;
-    private String Link = null;
-    private String Location = null;
-    private String P3P = null;
-    private String Pragma = null;
-    private String Proxy_Authenticate = null;
-    private String Public_Key_Pins = null;
-    private String Retry_After = null;
-    private String Server = null;
-    private String Set_Cookie = null;
-    private String Strict_Transport_Security = null;
-    private String Trailer = null;
-    private String Transfer_Encoding = null;
-    private String TSV = null;
-    private String Upgrade = null;
-    private String Vary = null;
-    private String Via = null;
-    private String Warning = null;
-    private String WWW_Authenticate = null;*/
     private String responseMessage = null;
 
     private Map<String,String> headerVariablesMap = new HashMap<>(0);
@@ -103,11 +62,12 @@ public class HttpResponse
                 }
                 else
                 {
+                    headerVariablesMap.put("Connection","close");
+                    headerVariablesMap.put("Content_Length",String.valueOf(responseMessage.length()));
                     appendHeaders(builder);
                     builder.append("\r\n");
                     builder.append(responseMessage);
                     out.write(builder.toString().getBytes(charset));
-                    out.write(responseMessage.getBytes(charset));
                     out.flush();
                 }
             }
